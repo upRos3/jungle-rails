@@ -9,6 +9,7 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/signup'
+      flash[:alert] = "Email already in use or password fields do not match"
     end
   end
 

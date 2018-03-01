@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
       redirect_to '/'
     else
       redirect_to '/login'
+      flash[:alert] = "Email and password field do not match"
     end
   end
 

@@ -2,10 +2,14 @@
 
 <%= form_for :user, url: '/users' do |f| %>
 
-  Name: <%= f.text_field :name %>
-  Email: <%= f.text_field :email %>
-  Password: <%= f.password_field :password %>
-  Password Confirmation: <%= f.password_field :password_confirmation %>
-  <%= f.submit "Submit" %>
+  <div>Name: <%= f.text_field :name %></div>
+  <div>Email: <%= f.text_field :email %></div>
+  <div>Password: <%= f.password_field :password %></div>
+  <div>Password Confirmation: <%= f.password_field :password_confirmation %></div>
+  <div><%= f.submit "Submit" %></div>
 
+<% end %>
+
+<% if flash[:alert] %>
+  <div class="alert"><%= flash[:alert] %></div>
 <% end %>
