@@ -39,7 +39,7 @@ cat1.products.create!({
   name:  'Men\'s Classy shirt',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel1.jpg'),
-  quantity: 10,
+  quantity: 0,
   price: 64.99
 })
 
@@ -104,7 +104,7 @@ cat2.products.create!({
   name:  'World\'s Largest Smartwatch',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics3.jpg'),
-  quantity: 32,
+  quantity: 0,
   price: 2_026.29
 })
 
