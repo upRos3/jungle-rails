@@ -1,33 +1,40 @@
 class Admin::ProductsController < ApplicationController
+
   def index
-    @category = Category.order(id: :desc).all
+    @products = Product.order(id: :desc).all
   end
 
   def new
-    @category = Category.new
+    @product = Product.new
   end
 
   def create
-    @category = Category.new(product_params)
+    @product = Product.new(product_params)
 
-    if @category.save
-      redirect_to %i[admin products], notice: 'Category created!'
+    if @product.save
+      redirect_to [:admin, :products], notice: 'Product created!'
     else
       render :new
     end
   end
 
-  # def destroy
-  #   @product = Product.find params[:id]
-  #   @product.destroy
-  #   redirect_to [:admin, :products], notice: 'Product deleted!'
-  # end
+  def destroy
+    @product = Product.find params[:id]
+    @product.destroy
+    redirect_to [:admin, :products], notice: 'Product deleted!'
+  end
 
   private
 
   def product_params
-    params.require(:category).permit(
-      :name
+    params.require(:product).permit(
+      :name,
+      :description,
+      :category_id,
+      :quantity,
+      :image,
+      :price
     )
   end
+
 end
