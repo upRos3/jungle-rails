@@ -10,7 +10,9 @@ class OrdersController < ApplicationController
 
     if order.valid?
       empty_cart!
+      puts "WOAHWHDOIADWAD ---> #{order.id}"
       redirect_to order, notice: 'Your Order has been placed.'
+      Receipt.receipt_email(current_user, order).deliver_now
     else
       redirect_to cart_path, flash: { error: order.errors.full_messages.first }
     end
