@@ -24,21 +24,18 @@ end
 ## users
 
 User.create!({
-  id: 1,
   name: 'test',
   email: 'test@test.test',
   password: 'hunter2'
 })
 
 User.create!({
-  id: 2,
   name: 'Josh',
   email: 'josh@test.test',
   password: 'hunter2'
 })
 
 User.create!({
-  id: 3,
   name: 'Patrick',
   email: 'Pat@test.test',
   password: 'hunter2'
