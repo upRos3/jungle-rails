@@ -21,6 +21,29 @@ end
 
 # Let's do this ...
 
+## users
+
+User.create!({
+  id: 1,
+  name: 'test',
+  email: 'test@test.test',
+  password: 'hunter2'
+})
+
+User.create!({
+  id: 2,
+  name: 'Josh',
+  email: 'josh@test.test',
+  password: 'hunter2'
+})
+
+User.create!({
+  id: 3,
+  name: 'Patrick',
+  email: 'Pat@test.test',
+  password: 'hunter2'
+})
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -132,106 +155,80 @@ cat3.products.create!({
   price: 2_483.75
 })
 
-Product.destroy_all
+user1 = User.find(1)
+user2 = User.find(2)
+user3 = User.find(3)
 
-user1 = User.find(3)!
-user2 = User.find(4)!
-user3 = User.find(5)!
-
+Rating.destroy_all
 
 user1.ratings.create!({
-  name:  'Men\'s Classy shirt',
-  description: Faker::Hipster.paragraph(4),
-
+  product_id: 1,
+  rating: 5,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user1.ratings.create!({
-  name:  'Women\'s Zebra pants',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('apparel2.jpg'),
-  quantity: 18,
-  price: 124.99
+  product_id: 2,
+  rating: 3,
 })
 
 user1.ratings.create!({
-  name:  'Hipster Hat',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('apparel3.jpg'),
-  quantity: 4,
-  price: 34.49
+  product_id: 4,
+  rating: 1,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user2.ratings.create!({
-  name:  'Hipster Socks',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('apparel4.jpg'),
-  quantity: 8,
-  price: 25.00
-})
-
-user2.ratings.create!
-  name:  'Russian Spy Shoes',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('apparel5.jpg'),
-  quantity: 8,
-  price: 1_225.00
+  product_id: 10,
+  rating: 3,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user2.ratings.create!({
-  name:  'Human Feet Shoes',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('apparel6.jpg'),
-  quantity: 82,
-  price: 224.50
+  product_id: 8,
+  rating: 4,
+})
+
+user2.ratings.create!({
+  product_id: 3,
+  rating: 5,
+  description: Faker::Hipster.paragraph(1)
 })
 
 
 user3.ratings.create!({
-  name:  'Modern Skateboards',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('electronics1.jpg'),
-  quantity: 40,
-  price: 164.49
+  product_id: 7,
+  rating: 1,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user3.ratings.create!({
-  name:  'Hotdog Slicer',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('electronics2.jpg'),
-  quantity: 3,
-  price: 26.00
+  product_id: 10,
+  rating: 2,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user3.ratings.create!({
-  name:  'World\'s Largest Smartwatch',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('electronics3.jpg'),
-  quantity: 0,
-  price: 2_026.29
+  product_id: 6,
+  rating: 2,
 })
 
 user1.ratings.create!({
-  name:  'Optimal Sleeping Bed',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('furniture1.jpg'),
-  quantity: 320,
-  price: 3_052.00
+  product_id: 1,
+  rating: 4,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user2.ratings.create!({
-  name:  'Electric Chair',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('furniture2.jpg'),
-  quantity: 2,
-  price: 987.65
+  product_id: 8,
+  rating: 3,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user3.ratings.create!({
-  name:  'Red Bookshelf',
-  description: Faker::Hipster.paragraph(4),
-  image: open_asset('furniture3.jpg'),
-  quantity: 23,
-  price: 2_483.75
+  product_id: 11,
+  rating: 2,
+  description: Faker::Hipster.paragraph(1)
 })
 
 
