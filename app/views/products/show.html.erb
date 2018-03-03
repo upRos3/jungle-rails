@@ -28,6 +28,7 @@
 
     <div>
       <h1>Reviews:</h1>
+      <h3>Average rating: <%= @average_rating %></h3>
       <% @ratings.each do |rating| %>
       <div class="col-sm-8">
         <dl class="dl-horizontal">
@@ -65,7 +66,7 @@
 
             <div class="form-group">
               <%= form.label :rating  %>
-              <%= form.select :rating, [[' 1 horrible', 1], ['2 poor', 2], [' 3 mediocre', 3], ['4 good', 4], [' 5 great', 5]], class: 'form-control' %>
+              <%= form.select :rating, [[' 5 Awesome!', 5], ['4 Good', 4],  [' 3 Average', 3], ['2 Poor', 2], [' 1 Awful', 1]], class: 'form-control' %>
             </div>
 
             <%= form.submit 'Submit Review', class: 'btn btn-primary' %>
