@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   def authorize
     unless current_user
     redirect_to '/login'
-    flash[:error] = "You must be logged in to leave a review!"
+    flash[:error] = "You must be logged in to do that!"
     end
   end
 
