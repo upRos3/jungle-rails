@@ -5,9 +5,7 @@
 
   <div class="order-summary jumbotron">
     <h4>Thank you for your order
-      <% if @user %>
-        <%= @user.first_name %>
-      <% end %>!</h4>
+      <%= @user.first_name %>!</h4>
     <table class="table table-bordered">
       <thead>
         <tr>
