@@ -37,6 +37,39 @@
         </dl>
       </div>
       <% end %>
+
+    </div>
+    <div>
+      <div class="row">
+          <h1>Add Review</h1>
+        <div class="col-sm-6 col-sm-offset-1">
+          <%= form_for [@product, Rating.new] do |form| %>
+
+            <% if form.object.errors.any? %>
+              <div class="alert alert-danger">
+                <strong>The following errors prevented saving:</strong>
+                <ul>
+                  <% form.object.errors.full_messages.each do |error| %>
+                    <li><%= error %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group">
+              <%= form.label :description %>
+              <%= form.text_area :description, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= form.label :rating  %>
+              <%= form.select :rating, [[' 1 horrible', 1], ['2 poor', 2], [' 3 mediocre', 3], ['4 good', 4], [' 5 great', 5]], class: 'form-control' %>
+            </div>
+
+            <%= form.submit 'Submit Review', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
     </div>
 
 
