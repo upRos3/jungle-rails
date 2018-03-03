@@ -5,8 +5,13 @@
   </header>
 
   <div class="order-summary jumbotron">
-    <h4>Thank you for your order <%= current_user.first_name %>!</h4>
-    <h5>We have sent your receipt to <%= current_user.email %></h5>
+    <% if current_user %>
+      <h4>Thank you for your order <%= current_user.first_name %>!</h4>
+      <h5>We have sent your receipt to <%= current_user.email %></h5>
+    <% else %>
+      <h4>Thank you for your order! Please contact customer service with your order number if you require a receipt.</h4>
+    <% end %>
+
     <table class="table table-bordered">
       <thead>
         <tr>
