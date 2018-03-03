@@ -34,8 +34,10 @@
         <dl class="dl-horizontal">
           <dt>User</dt>
           <dd><%= rating.user.first_name %></dd>
+          <% if rating.description != "" %>
           <dt>Description</dt>
           <dd><%= rating.description %></dd>
+          <% end %>
           <dt>Rating</dt>
           <dd><%= rating.rating %> / 5</dd>
         </dl>

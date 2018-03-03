@@ -7,8 +7,11 @@ class ProductsController < ApplicationController
   def show
     @product = Product.find params[:id]
     @ratings = Rating.where(product_id: params[:id]).order(created_at: :desc)
-    @average_rating = @ratings.average(:rating).round(1)
-    puts @average_rating
-  end
 
+    if @ratings.average(:rating).blank?
+      @average_rating = "This product hasn't been rated yet!"
+    else
+      @average_rating = @ratings.average(:rating).round(1)
+    end
+  end
 end
