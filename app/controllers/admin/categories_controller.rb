@@ -14,7 +14,7 @@ class Admin::CategoriesController < Admin::AdminAuthController
     @category = Category.new(category_params)
 
     if @category.save
-      redirect_to %i[admin category], notice: 'Category created!'
+      redirect_to [:admin, :categories], notice: 'Category created!'
     else
       render :new
     end
