@@ -1,12 +1,17 @@
 <div>
   <dl class="dl-horizontal">
     <dt>User</dt>
-      <dd><%= rating.user.first_name %></dd>
-      <% if rating.description != "" %>
-      <dt>Description</dt>
-      <dd><%= rating.description %></dd>
-      <% end %>
-      <dt>Rating</dt>
-      <dd><%= rating.rating %>/ 5</dd>
-    </dl>
+    <dd><%= rating.user.first_name %></dd>
+    <% if rating.description != "" %>
+    <dt>Description</dt>
+    <dd><%= rating.description %></dd>
+    <% end %>
+    <dt>Rating</dt>
+    <dd><%= rating.rating %>/ 5</dd>
+    <% if current_user.id == rating.user_id %>
+    <dt>Delete review?</dt>
+    <dd><%= link_to product_ratings_path(product_id: @product.id, id: rating.id), class: 'btn btn-xs btn-danger', method: :delete do %></dd>
+    <% end %>
+    <% end %>
+  </dl>
 </div>
