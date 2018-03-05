@@ -6,5 +6,5 @@ class User < ActiveRecord::Base
    validates :first_name, presence: true
    validates :surname, presence: true
    validates :password, presence: true
-   validates :password_confirmation, presence: true
+   validates :password, confirmation: { case_senstive: true }
 end
