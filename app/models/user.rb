@@ -3,4 +3,5 @@ class User < ActiveRecord::Base
    has_many :ratings
 
    validates :email, uniqueness: true, on: :create
+   #validates for first name password etc
 end

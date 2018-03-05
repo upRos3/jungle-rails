@@ -2,9 +2,9 @@ class RatingsController < ApplicationController
   before_filter :authorize
 
   def create
-  @product = Product.find(params[:product_id])
-  @rating = @product.ratings.new(rating_params)
-  @rating.user_id = current_user.id
+    @product = Product.find(params[:product_id])
+    @rating = @product.ratings.new(rating_params)
+    @rating.user_id = current_user.id
 
     if @rating.save
       redirect_to :back

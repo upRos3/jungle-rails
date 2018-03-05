@@ -6,7 +6,7 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find params[:id]
-    @ratings = Rating.where(product_id: params[:id]).order(created_at: :desc)
+    @ratings = @product.ratings.order(created_at: :desc)
 
     if @ratings.average(:rating).blank?
       @average_rating = "This product hasn't been rated yet!"
