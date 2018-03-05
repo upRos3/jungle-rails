@@ -34,7 +34,7 @@ class Admin::ProductsController < Admin::AdminAuthController
       :category_id,
       :quantity,
       :image,
-      :price
+      :price_cents
     )
   end
 end

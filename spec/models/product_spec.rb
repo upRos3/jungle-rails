@@ -3,25 +3,26 @@ require 'faker'
 
 RSpec.describe Product, type: :model do
   describe 'Validations' do
+    before(:each) do
+      @category = Category.create({
+        name: "Beer"
+        })
+        @product = @category.products.new({
+          name: Faker::Beer.name,
+          description: Faker::Hipster.paragraph,
+          price_cents: Faker::Number.between(1, 10000000),
+          quantity: Faker::Number.between(1, 100),
+          category_id: @category.id
+        })
+      end
+
     it 'ensures a new product is created with the right validations' do
-      @product = Product.new
-      @category = Category.new
-        @category.id = Faker::Number.between(1, 3)
-        @category.save
-
-      @product.name = Faker::Beer.name
-      @product.price = Faker::Number.decimal(2)
-      @product.quantity = Faker::Number.between(1, 100)
-
-      @product.category_id = @category.id
-
       @product.save
 
       expect(@product).to be_valid
     end
 
     it 'ensures that a name should be validated' do
-      @product = Product.new
       @product.name = nil
       @product.save
 
@@ -30,16 +31,14 @@ RSpec.describe Product, type: :model do
     end
 
     it 'ensures that a price should be validated' do
-      @product = Product.new
-      @product.price = nil
+      @product.price_cents = nil
       @product.save
 
       expect(@product).to_not be_valid
-      expect(@product.errors[:price]).to include("can't be blank")
+      expect(@product.errors[:price_cents]).to include("can't be blank")
     end
 
     it 'ensures that a quantity should be validated' do
-      @product = Product.new
       @product.quantity = nil
       @product.save
 
@@ -48,12 +47,11 @@ RSpec.describe Product, type: :model do
     end
 
     it 'ensures that a category should be validated' do
-      @product = Product.new
       @product.category_id = nil
       @product.save
 
       expect(@product).to_not be_valid
-      expect(@product.errors[:category]).to include("can't be blank")
+      expect(@product.errors[:category_id]).to include("can't be blank")
     end
   end
 end
