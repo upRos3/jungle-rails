@@ -34,7 +34,7 @@ gem 'money-rails'
 gem 'carrierwave'
 gem 'rmagick'
 gem 'stripe'
-gem 'faker'
+gem 'faker', :git => 'https://github.com/stympy/faker.git', :branch => 'master'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
