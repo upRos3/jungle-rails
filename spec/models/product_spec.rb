@@ -49,7 +49,7 @@ RSpec.describe Product, type: :model do
 
     it 'ensures that a category should be validated' do
       @product = Product.new
-      @product.category = nil
+      @product.category_id = nil
       @product.save
 
       expect(@product).to_not be_valid
