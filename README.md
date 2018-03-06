@@ -27,6 +27,6 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 
 ## Screenshots
 
-!["Products Page"](linkhere)
-!["Admin Page"](linkhere)
-!["Product Page"](linkhere)
+!["Products Page"](https://github.com/upRos3/jungle-rails/blob/master/docs/jungle1.png)
+!["Admin Page"](https://github.com/upRos3/jungle-rails/blob/master/docs/jungle2.png)
+!["Product Page"](https://github.com/upRos3/jungle-rails/blob/master/docs/jungle3.png)
