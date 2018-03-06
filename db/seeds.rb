@@ -24,15 +24,15 @@ end
 ## users
 
 User.create!({
-  first_name: 'test',
-  surname: 'test',
+  first_name: 'Test',
+  surname: 'Test',
   email: 'test@test.test',
   password: 'hunter2'
 })
 
 User.create!({
   first_name: 'Josh',
-  surname: 'pose',
+  surname: 'Pose',
   email: 'josh@test.test',
   password: 'hunter2'
 })
@@ -170,6 +170,7 @@ user1.ratings.create!({
 user1.ratings.create!({
   product_id: 2,
   rating: 3,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user1.ratings.create!({
@@ -187,6 +188,7 @@ user2.ratings.create!({
 user2.ratings.create!({
   product_id: 8,
   rating: 4,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user2.ratings.create!({
@@ -211,6 +213,7 @@ user3.ratings.create!({
 user3.ratings.create!({
   product_id: 6,
   rating: 2,
+  description: Faker::Hipster.paragraph(1)
 })
 
 user1.ratings.create!({

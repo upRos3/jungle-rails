@@ -6,6 +6,11 @@ class User < ActiveRecord::Base
      self.email.downcase!
    end
 
+   def titlecase_names
+     self.first_name = self.first_name.titlecase
+     self.surname = self.surname.titlecase
+   end
+
    def self.authenticate_with_credentials(email, password)
       email = email.strip.downcase
       user = User.find_by(email: email)
@@ -20,4 +25,5 @@ class User < ActiveRecord::Base
    validates :password, presence: true, length: { minimum:6 }
    validates :password, confirmation: { case_sensitive: true }
    before_save :downcase_email
+   before_save :titlecase_names
 end
