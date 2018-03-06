@@ -6,9 +6,9 @@ RSpec.describe User, type: :model do
       @user = User.new({
         first_name: Faker::Name.first_name,
         surname: Faker::Name.last_name,
-        email: "test@test.com",
-        password: "Testing",
-        password_confirmation: "Testing",
+        email: "test@test.test",
+        password: "hunter2",
+        password_confirmation: "hunter2",
       })
     end
 
@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
     end
 
     it 'tests to make sure that passwords are case sensitive' do
-      @user.password_confirmation = "testing"
+      @user.password_confirmation = "Hunter2"
 
       @user.save
 
@@ -62,6 +62,48 @@ RSpec.describe User, type: :model do
 
         expect(@user).to_not be_valid
         expect(@user.errors[:password]).to include("is too short (minimum is 6 characters)")
+    end
+  end
+
+  describe '.authenticate_with_credentials' do
+    before(:each) do
+      @user = User.new({
+        first_name: Faker::Name.first_name,
+        surname: Faker::Name.last_name,
+        email: "test@test.test",
+        password: "hunter2",
+        password_confirmation: "hunter2",
+      })
+    end
+
+    it 'checks if people can log in with authenticate_with_credentials method' do
+      @user.save
+      login = User.authenticate_with_credentials(@user.email, @user.password)
+      expect(login).to eql(@user)
+    end
+
+    it 'checks it a failed login with wrong password will return nil' do
+      @user.save
+      login = User.authenticate_with_credentials(@user.email, "not_correct")
+      expect(login).to be_nil
+    end
+
+    it 'checks it a failed login with wrong email will return nil' do
+      @user.save
+      login = User.authenticate_with_credentials("wrong@email.com", @user.password)
+      expect(login).to be_nil
+    end
+
+    it 'checks that whitespace before and after the input does not impact a correct email' do
+      @user.save
+      login = User.authenticate_with_credentials("  #{@user.email}    ", @user.password)
+      expect(login).to eql(@user)
+    end
+
+    it 'checks that email input is not case_sensitive' do
+      @user.save
+      login = User.authenticate_with_credentials("TEST@tEst.test", @user.password)
+      expect(login).to eql(@user)
     end
   end
 end
